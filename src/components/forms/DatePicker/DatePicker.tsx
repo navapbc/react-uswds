@@ -75,6 +75,10 @@ export const DatePicker = ({
   const datePickerEl = useRef<HTMLDivElement>(null)
   const externalInputEl = useRef<HTMLInputElement>(null)
 
+  const isAriaDisabled =
+    inputProps['aria-disabled'] === true ||
+    inputProps['aria-disabled'] === 'true'
+
   const isError = validationStatus === 'error'
   const isSuccess = validationStatus === 'success'
 
@@ -185,6 +189,10 @@ export const DatePicker = ({
   }, [externalValue, minDate, maxDate])
 
   const handleToggleClick = (): void => {
+    if (isAriaDisabled) {
+      return
+    }
+
     if (showCalendar) {
       // calendar is open, hide it
       setStatuses([])
@@ -285,6 +293,7 @@ export const DatePicker = ({
         tabIndex={-1}
         required={false}
         disabled={false}
+        aria-disabled={undefined}
         value={internalValue}
         readOnly
       />
@@ -297,6 +306,7 @@ export const DatePicker = ({
           type="text"
           disabled={disabled}
           required={required}
+          readOnly={inputProps['readOnly'] ?? isAriaDisabled}
           value={externalValue}
           ref={externalInputEl}
           onInput={handleExternalInput}
@@ -315,6 +325,7 @@ export const DatePicker = ({
           aria-haspopup={true}
           aria-label={toggleCalendar}
           disabled={disabled}
+          aria-disabled={inputProps['aria-disabled']}
           onClick={handleToggleClick}></button>
         {/* Ignoring error: "Non-interactive elements should not be assigned mouse or keyboard event listeners." */}
         {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
