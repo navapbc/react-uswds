@@ -199,10 +199,7 @@ export const BigFooter = (): JSX.Element => (
                 [
                   'Topic',
                   ...Array.from({ length: 4 }, (_x, i) => (
-                    <a
-                      key={`topic_2_${i}`}
-                      className="usa-footer__secondary-link"
-                      href="#">
+                    <a key={`topic_2_${i}`} href="#">
                       Secondary link
                     </a>
                   )),
@@ -210,10 +207,7 @@ export const BigFooter = (): JSX.Element => (
                 [
                   'Topic',
                   ...Array.from({ length: 4 }, (_x, i) => (
-                    <a
-                      key={`topic_3_${i}`}
-                      className="usa-footer__secondary-link"
-                      href="#">
+                    <a key={`topic_3_${i}`} href="#">
                       Secondary link
                     </a>
                   )),

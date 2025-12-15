@@ -1,7 +1,6 @@
 /*  eslint-disable jsx-a11y/anchor-is-valid */
 import React, { type JSX } from 'react'
 
-import { Footer } from '../Footer/Footer'
 import { FooterNav } from './FooterNav'
 
 export default {
@@ -26,7 +25,7 @@ export const SlimFooterNav = (): JSX.Element => (
     size="slim"
     links={Array.from({ length: 4 }, (_x, i) => (
       <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
-        PrimaryLink
+        Primary link
       </a>
     ))}
   />
@@ -38,7 +37,7 @@ export const MediumFooterNav = (): JSX.Element => (
     size="medium"
     links={Array.from({ length: 4 }, (_x, i) => (
       <a key={`primary_${i}`} className="usa-footer__primary-link" href="#">
-        PrimaryLink
+        Primary link
       </a>
     ))}
   />
@@ -46,44 +45,39 @@ export const MediumFooterNav = (): JSX.Element => (
 
 export const BigFooterNav = {
   render: (): JSX.Element => (
-    <Footer
+    <FooterNav
+      className="padding-bottom-2"
+      aria-label="Footer navigation"
       size="big"
-      primary={
-        <FooterNav
-          aria-label="Footer navigation"
-          size="big"
-          links={[
-            [
-              'Topic',
-              ...Array.from({ length: 3 }, (_x, i) => (
-                <a key={`topic_0_${i}`} href="#">
-                  Secondary link
-                </a>
-              )),
-            ],
-            [
-              'Topic',
-              <a key="topic_1_0" href="#">
-                Secondary link that is pretty long
-              </a>,
-              ...Array.from({ length: 2 }, (_x, i) => (
-                <a key={`topic_1_${i + 1}`} href="#">
-                  Secondary link
-                </a>
-              )),
-            ],
-            [
-              'Topic',
-              ...Array.from({ length: 3 }, (_x, i) => (
-                <a key={`topic_2_${i}`} href="#">
-                  Secondary link
-                </a>
-              )),
-            ],
-          ]}
-        />
-      }
-      secondary={<></>}
+      links={[
+        [
+          'Topic',
+          ...Array.from({ length: 3 }, (_x, i) => (
+            <a key={`topic_0_${i}`} href="#">
+              Secondary link
+            </a>
+          )),
+        ],
+        [
+          'Topic',
+          <a key="topic_1_0" href="#">
+            Secondary link that is pretty long
+          </a>,
+          ...Array.from({ length: 2 }, (_x, i) => (
+            <a key={`topic_1_${i + 1}`} href="#">
+              Secondary link
+            </a>
+          )),
+        ],
+        [
+          'Topic',
+          ...Array.from({ length: 3 }, (_x, i) => (
+            <a key={`topic_2_${i}`} href="#">
+              Secondary link
+            </a>
+          )),
+        ],
+      ]}
     />
   ),
 
